@@ -1,0 +1,212 @@
+.age-verification-overlay {
+  visibility: visible !important;
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  font-family: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  box-sizing: border-box;
+}
+
+.age-verification-overlay * {
+  box-sizing: border-box;
+}
+
+/* Mobile: matches Figma "pop-up" frame 358x320 (16px padding) */
+.age-verification-card {
+  width: 100%;
+  max-width: 540px;
+  min-height: 320px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.25);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.age-verification-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  text-align: center;
+}
+
+.age-verification-title {
+  margin: 0;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 32px;
+  color: #333;
+}
+
+.age-verification-copy {
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+  color: #333;
+  text-align: center;
+}
+
+.age-verification-copy strong {
+  font-weight: 700;
+}
+
+.age-verification-actions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.age-verification-buttons {
+  width: 100%;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.age-verification-btn {
+  flex: 1 1 140px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.4;
+  cursor: pointer;
+  text-align: center;
+  border: 1px solid #0d40ff !important;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+/*
+ * !important below is intentional and scoped to this uniquely-named
+ * component only: this widget is injected via a global site-wide hook onto
+ * many unrelated template families, some of which ship a base/reset
+ * stylesheet targeting `[type="button"], button { background-color:
+ * transparent }`. That selector matches our buttons at the same specificity
+ * as these classes (attribute selector vs. class selector), so whichever
+ * stylesheet loads later wins the tie — !important removes that race.
+ */
+.age-verification-btn-confirm {
+  background: #0d40ff !important;
+  color: #fff !important;
+}
+
+.age-verification-btn-confirm:hover {
+  background: #0a34cc !important;
+}
+
+.age-verification-btn-deny {
+  background: #fff !important;
+  color: #0d40ff !important;
+}
+
+.age-verification-btn-deny:hover {
+  background: #f2f5ff !important;
+}
+
+.age-verification-disclaimer {
+  margin: 0;
+  font-size: 12px;
+  line-height: 16px;
+  color: #666;
+  text-align: center;
+}
+
+.age-verification-disclaimer a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+/* Blocked ("under 18") state */
+
+.age-verification-card-blocked {
+  padding: 0;
+  gap: 0;
+  justify-content: flex-start;
+}
+
+.age-verification-blocked-banner {
+  width: 100%;
+  padding: 16px 24px;
+  background: #8b0000;
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  text-align: center;
+}
+
+.age-verification-blocked-content {
+  width: 100%;
+  flex: 1;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.age-verification-blocked-title {
+  margin: 0;
+  font-weight: 700;
+  font-size: 24px;
+  color: #333;
+}
+
+.age-verification-blocked-subtitle {
+  margin: 0;
+  font-weight: 600;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Desktop: matches Figma "pop-up" frame 540x400 (32px padding) */
+@media (min-width: 640px) {
+  .age-verification-card {
+    min-height: 400px;
+    padding: 32px;
+  }
+
+  /*
+   * Same specificity as .age-verification-card's padding above (single
+   * class each), so without this the desktop rule wins on source order
+   * alone and the blocked card keeps 32px padding instead of 0.
+   */
+  .age-verification-card-blocked {
+    padding: 0;
+  }
+
+  .age-verification-title {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .age-verification-copy {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .age-verification-buttons {
+    gap: 24px;
+  }
+
+  .age-verification-btn {
+    font-size: 18px;
+  }
+}
