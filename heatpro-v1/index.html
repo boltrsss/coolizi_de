@@ -1590,22 +1590,7 @@ pintrk('page');
         </ul>
     </div>
 
-    <script>
-        (function() {
-            var BASE = "https://go.buyerskills.com/click";
-
-            function go() {
-                var q = location.search.replace(/^\?/, "");
-                var u = BASE + (q ? (BASE.indexOf("?") > -1 ? "&" : "?") + q : "");
-                document.querySelectorAll('a[href^="' + BASE + '"]').forEach(function(a) {
-                    a.href = u;
-                });
-            }
-            if (document.readyState !== "loading") go();
-            else document.addEventListener("DOMContentLoaded", go);
-        })();
-    </script>
-
+    
     <div style="max-width:700px;margin:40px auto 0;padding:24px 16px 32px;border-top:1px solid #ddd;font-family:Arial,Helvetica,sans-serif;font-size:10px;line-height:1.5;color:#aaa;">
         <p style="margin:0;">Offenlegung von Werbung: Bei dieser Website handelt es sich um eine Werbeanzeige (Advertorial) und nicht um eine redaktionelle Nachrichtenpublikation. Alle auf dieser Website abgebildeten Personen sind, sofern nicht anders angegeben, Models. Der
             Betreiber dieser Website steht in einer finanziellen Verbindung zu den hier beworbenen Produkten und Dienstleistungen und erhält eine Vergütung, wenn über diese Website ein Kauf getätigt oder ein qualifizierter Lead vermittelt wird. Inhalte
